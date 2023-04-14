@@ -1,14 +1,12 @@
 import Head from "next/head";
 import Image from "next/image";
-import { Inter } from "next/font/google";
+
 // import styles from "@/styles/Home.module.css";
-import Pokemons from "./Pokemons";
+import Pokemons from "./components/Pokemons";
 import client from "@/utils/apollo-client";
 import GET_ALL_POKEMONS from "@/queries/getAllPokemons";
 import { PokemonPage } from "@/@types/types";
-import PageHandler from "./PageHandler";
-
-const inter = Inter({ subsets: ["latin"] });
+import PageHandler from "./components/PageHandler";
 
 export default function Home({ data }: { data: PokemonPage }) {
 	console.log(data);
@@ -27,7 +25,6 @@ export default function Home({ data }: { data: PokemonPage }) {
 				<link rel="icon" href="/logo.svg" />
 			</Head>
 			<main>
-				<PageHandler page={"1"} />
 				<Pokemons data={data} />
 			</main>
 		</>

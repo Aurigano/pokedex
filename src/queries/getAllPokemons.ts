@@ -6,6 +6,22 @@ const GET_ALL_POKEMONS = gql`
 			id
 			number
 			name
+			types
+			image
+		}
+	}
+`;
+
+export default GET_ALL_POKEMONS;
+
+// Capable Query for future reference
+
+/**
+ * query pokemons($first: Int!) {
+		pokemons(first: $first) {
+			id
+			number
+			name
 			weight {
 				minimum
 				maximum
@@ -24,6 +40,4 @@ const GET_ALL_POKEMONS = gql`
 			image
 		}
 	}
-`;
-
-export default GET_ALL_POKEMONS;
+ */

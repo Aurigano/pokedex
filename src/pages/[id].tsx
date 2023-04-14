@@ -2,12 +2,10 @@ import React from "react";
 import Head from "next/head";
 import { styled } from "@mui/material";
 import { useRouter } from "next/router";
-import { useQuery } from "@apollo/client";
 import client from "@/utils/apollo-client";
 import GET_ALL_POKEMONS from "@/queries/getAllPokemons";
-import Pokemons from "./Pokemons";
+import Pokemons from "./components/Pokemons";
 import { PokemonPage } from "@/@types/types";
-import PageHandler from "./PageHandler";
 
 const StyledDiv = styled("div")(
 	(props) => `
@@ -33,6 +31,10 @@ const PageValues = (props: PageType) => {
 	const { data } = props;
 
 	console.log(data);
+
+	if (router.isFallback) {
+		return <>Loading...</>;
+	}
 	return (
 		<>
 			<Head>
@@ -48,8 +50,7 @@ const PageValues = (props: PageType) => {
 				<link rel="icon" href="/logo.svg" />
 			</Head>
 			<main>
-				<PageHandler page={id?.toString()} />
-				<Pokemons data={data} />
+				<Pokemons data={data} page={id?.toString()} />
 			</main>
 		</>
 	);
@@ -57,10 +58,10 @@ const PageValues = (props: PageType) => {
 
 export default PageValues;
 
-export async function getStaticProps(context: { params: any }) {
+export async function getStaticProps(context: { params: { id: string } }) {
 	const { params } = context;
 	console.log(params.id);
-	// Get external data from the file system, API, DB, etc.
+	// Getting all pokemon list from GraphQL API
 	const { data } = await client.query({
 		query: GET_ALL_POKEMONS,
 		variables: {
@@ -68,8 +69,6 @@ export async function getStaticProps(context: { params: any }) {
 		},
 	});
 
-	// The value of the `props` key will be
-	//  passed to the `Home` component
 	return {
 		props: {
 			data: { ...data, pokemons: [...data.pokemons.slice(-20)] },
