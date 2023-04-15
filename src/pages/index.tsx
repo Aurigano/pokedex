@@ -21,7 +21,7 @@ export default function Home({ data }: { data: PokemonPage }) {
 					name="viewport"
 					content="width=device-width, initial-scale=1"
 				/>
-				<link rel="icon" href="/logo.svg" />
+				<link rel="icon" href="/logo.png" />
 			</Head>
 			<main>
 				<Pokemons data={data} />
