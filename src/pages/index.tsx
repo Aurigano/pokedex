@@ -2,14 +2,13 @@ import Head from "next/head";
 import Image from "next/image";
 
 // import styles from "@/styles/Home.module.css";
-import Pokemons from "./components/Pokemons";
+import Pokemons from "../components/Pokemons";
 import client from "@/utils/apollo-client";
 import GET_ALL_POKEMONS from "@/queries/getAllPokemons";
 import { PokemonPage } from "@/@types/types";
-import PageHandler from "./components/PageHandler";
+import PageHandler from "../components/PageHandler";
 
 export default function Home({ data }: { data: PokemonPage }) {
-	console.log(data);
 	return (
 		<>
 			<Head>

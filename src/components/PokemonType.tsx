@@ -105,8 +105,11 @@ const StyledDiv = styled("div")<PokeTypeProps>(
 const PokemonType = ({ data, size }: PropType) => {
 	return (
 		<StyledDiv size={size || "small"}>
-			{data.map((PokeType) => (
-				<div className={colorDecider(PokeType) + " typeDiv"}>
+			{data?.map((PokeType) => (
+				<div
+					className={colorDecider(PokeType) + " typeDiv"}
+					key={`${PokeType}`}
+				>
 					{PokeType}
 				</div>
 			))}

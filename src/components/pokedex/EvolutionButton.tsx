@@ -119,6 +119,7 @@ const EvolutionButton = ({ id, number, image }: PropType) => {
 		setOpen(true);
 		getEvolution();
 	};
+
 	const dataWithNumber = { ...data, number, image };
 	const handleClose = () => setOpen(false);
 	return (

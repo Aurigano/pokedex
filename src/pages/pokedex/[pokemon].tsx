@@ -1,6 +1,6 @@
 import React from "react";
 import { useRouter } from "next/router";
-import PokemonDetailsComponent from "./components/PokemonDetailsComponent";
+import PokemonDetailsComponent from "../../components/pokedex/PokemonDetailsComponent";
 import client from "@/utils/apollo-client";
 import GET_SINGLE_POKEMON from "@/queries/getSinglePokemon";
 import GET_ALL_POKEMONS from "@/queries/getAllPokemons";
@@ -10,7 +10,6 @@ const PokemonDetails = (props: any) => {
 	const router = useRouter();
 	const { pokemon } = router.query;
 	const { data, loading, error } = props;
-	console.log(data);
 	return (
 		<>
 			<PokemonDetailsComponent
@@ -26,7 +25,6 @@ export default PokemonDetails;
 
 export async function getStaticProps(context: any) {
 	const { params } = context;
-	console.log(context);
 	// Get external data from the file system, API, DB, etc.
 	const { data } = await client.query({
 		query: GET_SINGLE_POKEMON,
@@ -59,7 +57,6 @@ export async function getStaticPaths() {
 		};
 		paths.push(ParamObject);
 	});
-	console.log("paths", paths);
 	return {
 		paths,
 		fallback: true,

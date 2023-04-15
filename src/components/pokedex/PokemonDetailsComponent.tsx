@@ -1,10 +1,11 @@
 import React from "react";
-import { styled, Button } from "@mui/material";
+import { styled, Button, IconButton } from "@mui/material";
 import { PokemonDetailsType } from "@/@types/types";
-import PokemonType from "@/pages/components/PokemonType";
+import PokemonType from "../PokemonType";
 import EvolutionButton from "./EvolutionButton";
 import ArrowBackIosNewSharpIcon from "@mui/icons-material/ArrowBackIosNewSharp";
 import { useRouter } from "next/router";
+import Link from "next/link";
 
 const StyledDiv = styled("div")(
 	(props) => `
@@ -34,10 +35,25 @@ const StyledDiv = styled("div")(
     .Head {
         // position: relative;
         display: flex;
-        justify-content: flex-start;
+        justify-content: space-between;
         font-size: 36px;
         align-items: center;
         margin: 30px 0;
+    }
+    .home-btn {
+        margin-right: 20px;
+        padding: 0;
+        height: 50px;
+        display: flex;
+        align-items: center
+    }
+    .home {
+        margin-right: 9px;
+        width: 32px;
+        :hover {
+            margin-right: 0;
+            width: 50px;
+        }
     }
     .prev-btn {
         // position: absolute;
@@ -200,7 +216,7 @@ const PokemonDetailsComponent = ({
 		types,
 		weaknesses,
 		resistant,
-	} = data;
+	} = data || {};
 	return (
 		<StyledDiv>
 			{loading && <p className="name">Loading...</p>}
@@ -216,6 +232,25 @@ const PokemonDetailsComponent = ({
 						>
 							Previous
 						</Button>
+						<Link
+							href={{
+								pathname: `/`,
+							}}
+							aria-label="home"
+							className="home-btn"
+						>
+							<img
+								src="/home-outline.png"
+								alt="home"
+								className="home"
+								onMouseOver={(e) =>
+									(e.currentTarget.src = "/home.png")
+								}
+								onMouseOut={(e) =>
+									(e.currentTarget.src = "/home-outline.png")
+								}
+							/>
+						</Link>
 					</div>
 					<div className="poke-details">
 						<div className="image-div">
@@ -236,8 +271,8 @@ const PokemonDetailsComponent = ({
 								<p className="box-head">Height</p>
 								<div className="grey-pill">
 									<p className="box-label">
-										{height.minimum}&nbsp;-&nbsp;
-										{height.maximum}
+										{height?.minimum}&nbsp;-&nbsp;
+										{height?.maximum}
 									</p>
 								</div>
 							</div>
@@ -245,16 +280,16 @@ const PokemonDetailsComponent = ({
 								<p className="box-head">Weight</p>
 								<div className="grey-pill">
 									<p className="box-label">
-										{weight.minimum}&nbsp;-&nbsp;
-										{weight.maximum}
+										{weight?.minimum}&nbsp;-&nbsp;
+										{weight?.maximum}
 									</p>
 								</div>
 							</div>
 							<div className="evolute-btn">
 								<EvolutionButton
-									id={data.id}
-									number={data.number}
-									image={data.image}
+									id={data?.id}
+									number={data?.number}
+									image={data?.image}
 								/>
 							</div>
 						</div>

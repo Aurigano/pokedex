@@ -88,16 +88,16 @@ const StyledDiv = styled("div")(
 );
 
 const PokemonCard = ({ data }: PropType) => {
-	const PokemonName = data.name;
-	const PokemonNumber = data.number;
-	const ImageUrl = data.image;
-	const Type = data.types;
+	const PokemonName = data?.name;
+	const PokemonNumber = data?.number;
+	const ImageUrl = data?.image;
+	const Type = data?.types;
 
 	return (
 		<StyledDiv>
 			<Link
 				href={{
-					pathname: `/pokedex/${data.id}`,
+					pathname: `/pokedex/${data?.id}`,
 					// query: { id: PokemonName },
 				}}
 				className="link"

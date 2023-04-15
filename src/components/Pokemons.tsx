@@ -26,6 +26,19 @@ const StyledDiv = styled("div")(
         width: 25%;
         flex: 25%;
     }
+	.header {
+		max-width: 400px;
+		margin: auto;
+		display: flex;
+		align-items: flex-end;
+	}
+	.ball {
+		max-width: 75px;
+    	max-height: 75px;
+	}
+	.pokedex {
+		max-width: 300px;
+	}
 `
 );
 
@@ -36,12 +49,17 @@ type PropType = {
 
 const Pokemons = (props: PropType) => {
 	const { data, page } = props;
+	if (!data) return <>Loading...</>;
 	return (
 		<StyledDiv>
+			<div className="header">
+				<img src="/ball.webp" alt="ball" className="ball" />
+				<img src="/pokedex.webp" alt="pokedex" className="pokedex" />
+			</div>
 			<PageHandler page={page} />
 			<div className="cardHolder">
-				{data?.pokemons.map((pokemon) => (
-					<PokemonCard data={pokemon} />
+				{data?.pokemons?.map((pokemon) => (
+					<PokemonCard data={pokemon} key={`${pokemon.name}`} />
 				))}
 			</div>
 			<PageHandler page={page} />

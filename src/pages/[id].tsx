@@ -4,7 +4,7 @@ import { styled } from "@mui/material";
 import { useRouter } from "next/router";
 import client from "@/utils/apollo-client";
 import GET_ALL_POKEMONS from "@/queries/getAllPokemons";
-import Pokemons from "./components/Pokemons";
+import Pokemons from "../components/Pokemons";
 import { PokemonPage } from "@/@types/types";
 
 const StyledDiv = styled("div")(
@@ -29,8 +29,6 @@ const PageValues = (props: PageType) => {
 	const { id } = router.query;
 
 	const { data } = props;
-
-	console.log(data);
 
 	if (router.isFallback) {
 		return <>Loading...</>;
@@ -60,7 +58,6 @@ export default PageValues;
 
 export async function getStaticProps(context: { params: { id: string } }) {
 	const { params } = context;
-	console.log(params.id);
 	// Getting all pokemon list from GraphQL API
 	const { data } = await client.query({
 		query: GET_ALL_POKEMONS,

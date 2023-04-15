@@ -128,8 +128,6 @@ const EvolutionModal = ({
 	error,
 	loading,
 }: evolutionType) => {
-	console.log("from modal", data, loading);
-
 	return (
 		<Modal
 			open={open}
@@ -143,11 +141,13 @@ const EvolutionModal = ({
 					<button onClick={handleClose} className="close-btn">
 						<CloseSharpIcon className="close-icon" />
 					</button>
-					{/* {loading && <p className="modal-heading">Loading...</p>} */}
+					{!data?.pokemon && loading && (
+						<p className="modal-heading">Loading...</p>
+					)}
 					{error && <p className="modal-heading">{error.message}</p>}
 					{!data?.pokemon?.evolutions && !loading && (
 						<p className="modal-heading">
-							This Pokemon doesn't evolves
+							This Pokemon doesn't evolves further.
 						</p>
 					)}
 					{data?.pokemon?.evolutions && (
