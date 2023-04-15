@@ -105,7 +105,7 @@ const StyledDiv = styled("div")(
         .poke-stats {
             display: block !important;
         }
-        margin-top: 370px;
+        margin-top: 330px;
     }
 	.image-div {
         flex:1;
