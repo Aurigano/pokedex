@@ -42,6 +42,11 @@ const StyledDiv = styled("div")(
     flex-basis: 25%;
     width: 25%;
     flex: 23%;
+    @media only screen and (max-width: 800px) {
+        flex-basis: 100%;
+        width: 100%;
+        flex: 1;
+    }
     margin: 10px;
     padding: 20px;
     border-radius: 20px;

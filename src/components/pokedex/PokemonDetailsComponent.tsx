@@ -14,7 +14,6 @@ const StyledDiv = styled("div")(
     justify-content: center;
     align-items: center;
     max-width: 1280px;
-    margin: auto;
 	padding: 10px;
     height: 100%;
     background: #E9E9E9 url(/container_bg.png);
@@ -79,12 +78,33 @@ const StyledDiv = styled("div")(
     @media only screen and (max-width: 800px) {
         .poke-details {
             display: flex;
-            flex-direction: column;x
+            flex-direction: column;
         }
         .poke-image {
-            width: 300px;
-            height: 300px;
+            width: auto !important;
+            height: auto !important;
         }
+        .poke-stats {
+            display: block !important;
+        }
+        margin-top: 370px;
+    }
+    @media only screen and (max-width: 500px) {
+        .poke-details {
+            display: flex;
+            flex-direction: column;
+        }
+        .poke-image {
+            width: 200px !important;
+            height: 200px !important;
+        }
+        .poke-info {
+            justify-content: center !important; 
+        }
+        .poke-stats {
+            display: block !important;
+        }
+        margin-top: 370px;
     }
 	.image-div {
         flex:1;
