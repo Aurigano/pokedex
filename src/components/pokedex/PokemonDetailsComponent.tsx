@@ -14,6 +14,7 @@ const StyledDiv = styled("div")(
     justify-content: center;
     align-items: center;
     max-width: 1280px;
+    margin: auto;
 	padding: 10px;
     height: 100%;
     background: #E9E9E9 url(/container_bg.png);
@@ -87,7 +88,7 @@ const StyledDiv = styled("div")(
         .poke-stats {
             display: block !important;
         }
-        margin-top: 370px;
+        margin-top: 200px;
     }
     @media only screen and (max-width: 500px) {
         .poke-details {
